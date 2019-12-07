@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div id="frame" class="container">
+    <div class="row">
+        <div class="col card login">
+            <h1>Login</h1>
+            <hr>
+            <form action="be/log" method="post" class="form-horizontal" id="login">
+                <div class="form-group">
+                    <label class="form-label" for="name">User name</label>
+                    <input type="text" class="form-control" id="name" placeholder="User Name" name="name">
+                    <span id="c_name"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="pwd">Password</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd">
+                    <span id="c_pwd"></span>
+                </div>
+                <div class="buttons">
+                    <button id="submit" type="submit" class="btn btn-primary submit">Login</button>
+                    <a class="btn btn-secondary" href="register.html">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    function checkName() {
+        var name = document.getElementById("name").value;
+        var regName = /^\w{3,20}/;
+        var flag = regName.test(name);
+        if (flag) {
+            document.getElementById("c_name").innerText = "";
+        }
+        else{
+            document.getElementById("c_name").innerText = "用户名格式有误,请输入3-20个英文字符";
+        }
+        return flag
+    }
+
+    function checkPwd() {
+        var pwd = document.getElementById("pwd").value;
+        var regPwd = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+        var flag = regPwd.test(pwd);
+        if (flag) {
+            document.getElementById("c_pwd").innerText = "";
+        }
+        else{
+            document.getElementById("c_pwd").innerText = "密码格式有误,请输入8-16位包含字母与数字的密码";
+        }
+        return flag
+    }
+
+    document.getElementById("name").onblur = checkName;
+    document.getElementById("pwd").onblur = checkPwd;
+    document.getElementById("login").onsubmit = function () {
+        if (!(checkName() && checkPwd())) {
+            alert("输入有误，请检查");
+        }
+        return checkName() && checkPwd();
+    }
+</script>
+</body>
+<style>
+    #frame {
+        padding-top: 50px;
+    }
+
+    body {
+        height: 100%;
+        background-image: url("src/bg.jfif");
+        background-size: 100% 100%;
+    }
+
+    html {
+        height: 100%;
+        min-height: 600px;
+    }
+
+    .login {
+        padding: 50px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .form-control {
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .buttons {
+        width: auto;
+        font-size: 24px;
+        margin-top: 40px;
+    }
+
+    .buttons a {
+        margin-left: 20px;
+    }
+
+    #c_name, #c_pwd {
+        color: firebrick;
+    }
+</style>
+</html>
