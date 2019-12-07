@@ -22,13 +22,14 @@ public class Login extends HttpServlet {
         Properties prop=new Properties();
         InputStream inputStream = Login.class.getClassLoader().getResourceAsStream("druid.properties");
         Connection conn = null;
+        PreparedStatement preparedStatement = null;
         try {
             assert inputStream != null;
             prop.load(inputStream);
             DataSource dataSource = DruidDataSourceFactory.createDataSource(prop);
             conn = dataSource.getConnection();
             String sql = "SELECT * FROM users WHERE uname = ? AND upwd = MD5(?)";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,name);
             preparedStatement.setString(2,pwd);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -41,7 +42,13 @@ public class Login extends HttpServlet {
             if(conn!=null){
                 try {
                     conn.close();
-                    System.out.println("closed");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try {
+                    preparedStatement.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

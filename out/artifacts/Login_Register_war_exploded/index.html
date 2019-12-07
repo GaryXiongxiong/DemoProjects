@@ -43,7 +43,7 @@
             document.getElementById("c_name").innerText = "";
         }
         else{
-            document.getElementById("c_name").innerText = "用户名格式有误,请输入3-20个英文字符";
+            document.getElementById("c_name").innerText = "Invalid user name, should be 3-20 letters";
         }
         return flag
     }
@@ -56,7 +56,7 @@
             document.getElementById("c_pwd").innerText = "";
         }
         else{
-            document.getElementById("c_pwd").innerText = "密码格式有误,请输入8-16位包含字母与数字的密码";
+            document.getElementById("c_pwd").innerText = "Invalid password, should be 8-16 letters and numbers";
         }
         return flag
     }
@@ -65,7 +65,7 @@
     document.getElementById("pwd").onblur = checkPwd;
     document.getElementById("login").onsubmit = function () {
         if (!(checkName() && checkPwd())) {
-            alert("输入有误，请检查");
+            alert("Invalid input");
         }
         return checkName() && checkPwd();
     }
