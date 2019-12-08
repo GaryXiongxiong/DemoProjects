@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet",urlPatterns = "be/login")
+@WebServlet(name = "LoginServlet",urlPatterns = "/be/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
@@ -19,11 +19,11 @@ public class LoginServlet extends HttpServlet {
         User userLogin = new User(name,pwd);
         User user = new Login().login(userLogin);
         if(user==null){
-            request.getRequestDispatcher("failLogin").forward(request,response);
+            request.getRequestDispatcher("../failLogin").forward(request,response);
         }
         else{
             request.setAttribute("user",user);
-            request.getRequestDispatcher("successLogin").forward(request,response);
+            request.getRequestDispatcher("../successLogin").forward(request,response);
         }
     }
 
