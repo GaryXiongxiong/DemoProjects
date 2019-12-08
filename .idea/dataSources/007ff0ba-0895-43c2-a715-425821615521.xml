@@ -1122,7 +1122,7 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="276" name="e-mail">
+    <column id="280" parent="276" name="email">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1134,7 +1134,7 @@
       <Type>btree</Type>
     </index>
     <index id="282" parent="276" name="email_un">
-      <ColNames>e-mail</ColNames>
+      <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
@@ -1148,7 +1148,7 @@
       <UnderlyingIndexName>name_un</UnderlyingIndexName>
     </key>
     <key id="285" parent="276" name="email_un">
-      <ColNames>e-mail</ColNames>
+      <ColNames>email</ColNames>
       <UnderlyingIndexName>email_un</UnderlyingIndexName>
     </key>
   </database-model>
