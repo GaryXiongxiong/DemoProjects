@@ -6,10 +6,11 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Login&amp;Register" />
-          <element id="library" level="application" name="jquery" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="commons-logging-1.2" />
+          <element id="library" level="module" name="JUnit5.4" module-name="Login&amp;Register" />
+          <element id="library" level="module" name="commons-logging-1.2" module-name="Login&amp;Register" />
+          <element id="library" level="application" name="jquery" />
         </element>
       </element>
     </root>
